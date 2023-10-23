@@ -25,18 +25,18 @@
                 </div>
                 <div class="navbar-list">
                     <ul>
-                        <li><a href="#">Search</a></li>
-                        <li><a href="#">Latest</a></li>
-                        <li><a href="#">Genres</a></li>
-                        <li><a href="#" class="register">Register</a></li>
-                        <li><a href="#" class="signin">Signin</a></li>
+                        <li><a href="#sectionSearch" class="searchLi">Search</a></li>
+                        <li><a href="#sectionLatest" class="LatestLi">Latest</a></li>
+                        <li><a href="#sectionGenres" class="GenresLi">Genres</a></li>
+                        <li><a href="#" class="registerLi">Register</a></li>
+                        <li><a href="#" class="signinLi">Signin</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
     <!-- INPUT SEARCHBAR -->
-    <section class="searchBarSection">
+    <section class="searchBarSection" id="sectionSearch">
         <div class="container">
             <div class="search">
                 <input type="text" name="search" id="inputSearch" placeholder="Type a movie here">
@@ -72,12 +72,16 @@
             <p>Not a member yet ?</p><span>Sign Up</span>
         </div>
     </div>
+
+    <!-- MESSAGE RESULT ----------- -->
+    <div class="container">
+        <div class="messageResult">
+            <p class="message">Results for 'godfather'</p>
+        </div>
+    </div>
     <!-- FIRST SWIPER FOR RESEARCH -->
     <section class="swiperResearch">
         <div class="container">
-            <div class="messageResult">
-                <p class="message">Results for 'godfather'</p>
-            </div>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="./assets/harrypotter.jfif" alt=""></div>
@@ -94,6 +98,93 @@
             </div>
         </div>
     </section>
+    <!-- SECOND SWIPER FOR RELEASES -->
+    <section class="swiperReleases" id="sectionLatest">
+        <div class="container">
+            <div class="messageReleases">
+                <p>Latest releases</p>
+            </div>
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="./assets/chihiro.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/mononoke.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/nausicaa.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/laputa.jfif" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/totoro.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/hotaru.jpg" alt=""></div>
+                </div>
+            </div>
+            <div class="btn-swiper">
+                <div class="swiper-next-second"></div>
+                <div class="swiper-prev-second"></div>
+            </div>
+        </div>
+    </section>
+    <!-- MOVIES BY GENRE -->
+    <div class="sortMovies">
+        <div class="container">
+            <div class="sort">
+                <div class="title" id="sectionGenres">
+                    <h4>Movies by genre</h4>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li><a href="#" id="comedy" class="redBgMovies">Comedy</a></li>
+                        <li><a href="#" id="drama">Drama</a></li>
+                        <li><a href="#" id="action">Action</a></li>
+                        <li><a href="#" id="romance">Romance</a></li>
+                        <li><a href="#" id="fantasy">Fantasy</a></li>
+                        <li><a href="#" id="animation">Animation</a></li>
+                    </ul>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <!-- MOVIES BY GENRES -->
+    <section class="byGenres">
+        <div class="container">
+            <div class="messageGenres">
+                <p>Comedy</p>
+            </div>
+            <div class="swiper mySwiper3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="./assets/harrypotter.jfif" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/ironman.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/jurassic park.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/moonlight.jfif" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/ironman.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./assets/harrypotter.jfif" alt=""></div>
+                </div>
+            </div>
+            <div class="btn-swiper">
+                <div class="swiper-next-third"></div>
+                <div class="swiper-prev-third"></div>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="title"><span>BE</span>
+                    <h2>Movies</h2>
+                </div>
+                <div class="listFooter">
+                    <ul>
+                        <li><a href="#" class="searchLi">Search</a></li>
+                        <li><a href="#" class="LatestLi">Latest</a></li>
+                        <li><a href="#" class="genresLi">Genres</a></li>
+                        <li><a href="#" class="registerLi">Register</a></li>
+                        <li><a href="#" class="signinLi">Signin</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    <h6>@2023 - All rights reserved</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- SWIPER SCRIPT JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>

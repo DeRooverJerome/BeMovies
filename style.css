@@ -14,6 +14,10 @@
   list-style: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #191b20;
   color: hsla(0, 0%, 100%, 1);
@@ -367,15 +371,16 @@ input[type="text"] {
   font-weight: 400;
   margin-top: 64px;
   margin-bottom: 10px;
+  opacity: 0;
+}
+
+.messageResult {
+  margin-left: 224px;
 }
 
 /* -------------------------------- */
 
-/*  BEGINING SWIPER -----------*/
-
-.swiperResearch {
-  display: flex;
-}
+/*  BEGINING FIRST SWIPER -----------*/
 
 .swiper {
   width: 1001px;
@@ -424,4 +429,160 @@ input[type="text"] {
   left: 180px;
   cursor: pointer;
   top: -175px;
+}
+
+/* END FIRST SWIPER -----------------*/
+
+/* SECOND SWIPER ----------------------------- */
+
+.messageReleases {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 224px;
+  margin-top: 95px;
+  margin-bottom: 10px;
+}
+
+.swiper-next-second {
+  content: url(./assets/Vector-right.png);
+  position: absolute;
+  right: 180px;
+  cursor: pointer;
+  top: -175px;
+}
+.swiper-prev-second {
+  content: url(./assets/Vector-left.png);
+  position: absolute;
+  left: 180px;
+  cursor: pointer;
+  top: -175px;
+}
+
+/* END SECOND SWIPER ------------------------ */
+
+/* MOVIES BY GENRE SORT ------------------------------- */
+
+.sortMovies {
+  display: flex;
+}
+
+.title h4 {
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 95px;
+  margin-bottom: 46px;
+}
+
+.list {
+  margin-bottom: 26px;
+}
+
+.list ul li a {
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+hr {
+  margin-bottom: -60px;
+}
+
+/* JS BACKGROUND RED ON SORT MOVIES ---------- */
+
+.redBgMovies {
+  background: #c00;
+  padding: 7px;
+  width: 84px;
+  height: 33px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* -------------------------------------- */
+
+/* THIRD SWIPER ---------------------------------- */
+
+.messageGenres p {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 224px;
+  margin-top: 95px;
+  margin-bottom: 10px;
+}
+
+.swiper-next-third {
+  content: url(./assets/Vector-right.png);
+  position: absolute;
+  right: 180px;
+  cursor: pointer;
+  top: -175px;
+}
+.swiper-prev-third {
+  content: url(./assets/Vector-left.png);
+  position: absolute;
+  left: 180px;
+  cursor: pointer;
+  top: -175px;
+}
+
+/* FOOTER ------------------ */
+
+.footer {
+  background: #141517;
+  height: 186px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 109px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title span {
+  color: #c00;
+  font-family: Inria Sans;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.title h2 {
+  color: #fff;
+  font-family: Inria Sans;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.listFooter ul li a {
+  color: #fff;
+  font-family: Inria Sans;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+}
+
+.listFooter ul li a:hover {
+  color: #c00;
+}
+
+.copyright {
+  color: #b8b8b8;
+  font-family: Inria Sans;
+  font-size: 14px;
+  font-weight: 300;
 }
