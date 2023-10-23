@@ -1,0 +1,423 @@
+/* Import of Fonts */
+/* Fonts Inria in 300 and 700 */
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;700&display=swap");
+/* Fonts Inter in 400 */
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+/* RESET  ---------------------------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background: #191b20;
+  color: hsla(0, 0%, 100%, 1);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* END RESET ---------------------------------------*/
+
+/* HEADER --------------------*/
+
+.navbar {
+  background: #141517;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.main-title {
+  margin-left: 180px;
+}
+
+h1 {
+  font-family: "Inria Sans", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 > span {
+  color: #c00;
+  font-family: Inria Sans;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.navbar-list {
+  margin-right: 180px;
+}
+
+ul {
+  display: flex;
+  gap: 30px;
+}
+
+ul > li > a {
+  color: #fff;
+  font-family: Inria Sans;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+}
+
+ul > li > a:hover {
+  color: #c00;
+}
+
+/* END HEADER -------------- */
+
+/* INPUT BUTTON SEARCH ----------- */
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 73px;
+}
+
+.search > input {
+  width: 272px;
+  height: 44px;
+  background: #fff;
+  color: hsla(0, 0%, 0%, 1);
+  padding-left: 10px;
+  border: none;
+}
+
+input::placeholder {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input[type="text"] {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.search > input:focus {
+  outline: none;
+}
+
+.search > span {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 0px 8px 8px 0px;
+  background: #c00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.validateSearch {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 0px 8px 8px 0px;
+  background: #c00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.validateSearch:active {
+  background: rgb(129, 13, 13);
+}
+
+.fa-solid {
+  color: #fff;
+  font-size: 18px;
+}
+
+/* END INPUT BUTTON SEARCH --------- */
+
+/* MODAL ----------------------------------- */
+
+.modal {
+  width: 410px;
+  height: 608px;
+  background: #000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: 0.3s ease;
+  display: none;
+}
+
+.quitModal {
+  margin: 10px 10px;
+  cursor: pointer;
+}
+
+.selectLog {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 54px;
+}
+
+.signup {
+  width: 146px;
+  height: 54px;
+  flex-shrink: 0;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.signup > h2 {
+  color: #fff;
+  font-family: Inria Sans;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+.login {
+  width: 146px;
+  height: 54px;
+  flex-shrink: 0;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px 8px 8px 0px;
+}
+
+.login > h2 {
+  color: #fff;
+  font-family: Inria Sans;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+
+#modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#username {
+  width: 288px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 25px;
+  padding-left: 16px;
+}
+
+#username::placeholder {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+#username[type="text"] {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#password {
+  width: 288px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #fff;
+  padding-left: 16px;
+}
+#password::placeholder {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+#password[type="text"] {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 16px;
+}
+
+.check {
+  display: flex;
+  gap: 10px;
+  margin-left: 63px;
+  margin-top: 22px;
+}
+
+#checkbox {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.check > p {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.loginButton {
+  width: 288px;
+  height: 47px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #c00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 63px;
+  margin-top: 47px;
+}
+
+.loginButton > h3 {
+  color: #fff;
+  font-family: Inria Sans;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.forgot > p {
+  color: #c00;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 30px 0 19px 63px;
+}
+
+.notMember {
+  display: flex;
+  gap: 5px;
+  margin-left: 63px;
+}
+
+.notMember > p {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.notMember > span {
+  color: #c00;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* MODALE ACTIVE JS  ------- */
+
+.modal-active {
+  display: block;
+}
+
+/* SIGNUP AND LOGIN BACKGROUND RED ----- */
+
+.redBg {
+  background: #c00;
+  color: #fff;
+  border: #c00;
+}
+
+/* END MODAL -------------------------------- */
+
+/* FIRST SWIPER RESULT RESEARCH -------------------- */
+
+/* STYLE FOR THE MESSAGE RESULT */
+
+.message {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 64px;
+  margin-bottom: 10px;
+}
+
+/* -------------------------------- */
+
+/*  BEGINING SWIPER -----------*/
+
+.swiper {
+  width: 1001px;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.swiper-wrapper {
+  width: 973px !important;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 234px !important;
+  height: 351px !important;
+  margin-right: 19px !important;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-swiper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.swiper-next {
+  content: url(./assets/Vector-right.png);
+  position: absolute;
+  right: 180px;
+  cursor: pointer;
+  top: -175px;
+}
+.swiper-prev {
+  content: url(./assets/Vector-left.png);
+  position: absolute;
+  left: 180px;
+  cursor: pointer;
+  top: -175px;
+}
