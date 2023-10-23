@@ -31,6 +31,7 @@ body {
 img {
   display: block;
   width: 100%;
+  cursor: pointer;
 }
 
 /* END RESET ---------------------------------------*/
@@ -585,4 +586,116 @@ hr {
   font-family: Inria Sans;
   font-size: 14px;
   font-weight: 300;
+}
+
+/* CARD HOVER MOVIES INFOS */
+
+/* js addEvent on hover for brightness + innerHTML */
+
+.imgHover {
+  filter: brightness(10%);
+}
+
+/* POPUP MOVIE */
+
+/* js addEvent on click for display the card */
+
+/* POP UP MOVIE ON CLICK ------------------- */
+
+/* pop up display none */
+
+.popup {
+  width: 742px;
+  height: 526px;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+
+.quitPopUp {
+  margin: 10px;
+  margin-bottom: 50px;
+}
+
+.infosPop {
+  display: flex;
+  align-items: center;
+}
+
+.posterImg {
+  width: 234px;
+  height: 351px;
+  margin-left: 80px;
+  margin-right: 50px;
+  margin-top: -80px;
+}
+
+.textPop h2 {
+  color: #c00;
+  font-family: Inria Sans;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-top: -20px;
+}
+
+.textPop p {
+  color: #e9e9e9;
+  font-family: Inria Sans;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.textPop h5 {
+  color: #c00;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.fa-star {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  margin-right: 3px;
+}
+
+.genres {
+  color: #e9e9e9;
+  font-family: Inria Sans;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+}
+
+.resume {
+  margin-top: 13px;
+  width: 292px;
+  height: 278px;
+  color: #fff;
+  font-family: Inria Sans;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.48px;
+}
+
+.casting {
+  width: 292px;
+  color: #fff;
+  font-family: Inria Sans;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.48px;
 }
