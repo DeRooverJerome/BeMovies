@@ -373,6 +373,10 @@ input[type="text"] {
 
 /*  BEGINING SWIPER -----------*/
 
+.swiperResearch {
+  display: flex;
+}
+
 .swiper {
   width: 1001px;
   height: 100%;
