@@ -1,217 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BeMovies</title>
     <!-- FONTAWESOME CDN ADD -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- CSS LINK -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- SWIPER STYLE LINK -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <!-- HEADER  -->
     <header>
-        <div class="container">
-            <div class="navbar">
-                <div class="main-title">
-                    <h1><span>BE</span>MOVIES</h1>
-                </div>
-                <div class="navbar-list">
-                    <ul>
-                        <li><a href="#sectionSearch" class="searchLi">Search</a></li>
-                        <li><a href="#sectionLatest" class="LatestLi">Latest</a></li>
-                        <li><a href="#sectionGenres" class="GenresLi">Genres</a></li>
-                        <li><a href="#" class="registerLi">Register</a></li>
-                        <li><a href="#" class="signinLi">Signin</a></li>
-                    </ul>
-                </div>
-            </div>
+      <div class="container">
+        <div class="navbar">
+          <div class="main-title">
+            <h1><span>BE</span>MOVIES</h1>
+          </div>
+          <div class="navbar-list">
+            <ul>
+              <li><a href="#sectionSearch" class="searchLi">Search</a></li>
+              <li><a href="#sectionLatest" class="LatestLi">Latest</a></li>
+              <li><a href="#sectionGenres" class="GenresLi">Genres</a></li>
+              <li><a href="#" class="registerLi">Register</a></li>
+              <li><a href="#" class="signinLi">Signin</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </header>
     <!-- INPUT SEARCHBAR -->
     <section class="searchBarSection" id="sectionSearch">
-        <div class="container">
-            <div class="search">
-                <input type="text" name="search" id="inputSearch" placeholder="Type a movie here">
-                <button class="validateSearch"><i class="fa-solid fa-arrow-right"></i></button>
-            </div>
+      <div class="container">
+        <div class="search">
+          <input
+            type="text"
+            name="search"
+            id="inputSearch"
+            placeholder="Type a movie here"
+          />
+          <button class="validateSearch">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
+      </div>
     </section>
     <!-- MODAL -->
     <div class="modal">
-        <div class="quitModal"><i class="fa-regular fa-circle-xmark"></i></div>
-        <div class="selectLog">
-            <div class="signup">
-                <h2>signup</h2>
-            </div>
-            <div class="login">
-                <h2>login</h2>
-            </div>
+      <div class="quitModal"><i class="fa-regular fa-circle-xmark"></i></div>
+      <div class="selectLog">
+        <div class="signup">
+          <h2>signup</h2>
         </div>
-        <form action="" id="modal-form">
-            <input type="text" placeholder="Username" id="username">
-            <input type="password" name="password" id="password" placeholder="Password">
-        </form>
-        <div class="check"><input type="checkbox" name="checkbox" id="checkbox">
-            <p>Remember me</p>
+        <div class="login">
+          <h2>login</h2>
         </div>
-        <div class="loginButton">
-            <h3>Login</h3>
-        </div>
-        <div class="forgot">
-            <p>I forgot my password</p>
-        </div>
-        <div class="notMember">
-            <p>Not a member yet ?</p><span>Sign Up</span>
-        </div>
+      </div>
+      <form action="" id="modal-form">
+        <input type="text" placeholder="Username" id="username" />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+        />
+      </form>
+      <div class="check">
+        <input type="checkbox" name="checkbox" id="checkbox" />
+        <p>Remember me</p>
+      </div>
+      <div class="loginButton">
+        <h3>Login</h3>
+      </div>
+      <div class="forgot">
+        <p>I forgot my password</p>
+      </div>
+      <div class="notMember">
+        <p>Not a member yet ?</p>
+        <span>Sign Up</span>
+      </div>
     </div>
 
     <!-- MESSAGE RESULT ----------- -->
     <div class="container">
-        <div class="messageResult">
-            <p class="message">Results for 'godfather'</p>
-        </div>
+      <div class="messageResult">
+        <p class="message">Results for 'godfather'</p>
+      </div>
     </div>
     <!-- FIRST SWIPER FOR RESEARCH -->
     <section class="swiperResearch">
-        <div class="container">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="./assets/harrypotter.jfif" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/ironman.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/jurassic park.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/moonlight.jfif" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/ironman.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/harrypotter.jfif" alt=""></div>
-                </div>
+      <div class="container">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./assets/harrypotter.jfif" alt="" />
             </div>
-            <div class="btn-swiper">
-                <div class="swiper-next"></div>
-                <div class="swiper-prev"></div>
+            <div class="swiper-slide">
+              <img src="./assets/ironman.jpg" alt="" />
             </div>
+            <div class="swiper-slide">
+              <img src="./assets/jurassic park.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/moonlight.jfif" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/ironman.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/harrypotter.jfif" alt="" />
+            </div>
+          </div>
         </div>
+        <div class="btn-swiper">
+          <div class="swiper-next"></div>
+          <div class="swiper-prev"></div>
+        </div>
+      </div>
     </section>
     <!-- SECOND SWIPER FOR RELEASES -->
     <section class="swiperReleases" id="sectionLatest">
-        <div class="container">
-            <div class="messageReleases">
-                <p>Latest releases</p>
-            </div>
-            <div class="swiper mySwiper2">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="./assets/chihiro.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/mononoke.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/nausicaa.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/laputa.jfif" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/totoro.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/hotaru.jpg" alt=""></div>
-                </div>
-            </div>
-            <div class="btn-swiper">
-                <div class="swiper-next-second"></div>
-                <div class="swiper-prev-second"></div>
-            </div>
+      <div class="container">
+        <div class="messageReleases">
+          <p>Latest releases</p>
         </div>
+        <div class="swiper mySwiper2">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./assets/chihiro.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/mononoke.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/nausicaa.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/laputa.jfif" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/totoro.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/hotaru.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="btn-swiper">
+          <div class="swiper-next-second"></div>
+          <div class="swiper-prev-second"></div>
+        </div>
+      </div>
     </section>
     <!-- MOVIES BY GENRE -->
     <div class="sortMovies">
-        <div class="container">
-            <div class="sort">
-                <div class="title" id="sectionGenres">
-                    <h4>Movies by genre</h4>
-                </div>
-                <div class="list">
-                    <ul>
-                        <li><a href="#" id="comedy" class="redBgMovies">Comedy</a></li>
-                        <li><a href="#" id="drama">Drama</a></li>
-                        <li><a href="#" id="action">Action</a></li>
-                        <li><a href="#" id="romance">Romance</a></li>
-                        <li><a href="#" id="fantasy">Fantasy</a></li>
-                        <li><a href="#" id="animation">Animation</a></li>
-                    </ul>
-                </div>
-                <hr>
-            </div>
+      <div class="container">
+        <div class="sort">
+          <div class="title" id="sectionGenres">
+            <h4>Movies by genre</h4>
+          </div>
+          <div class="list">
+            <ul>
+              <li id="comedy" class="redBgMovies">Comedy</li>
+              <li id="drama">Drama</li>
+              <li id="action">Action</li>
+              <li id="romance">Romance</li>
+              <li id="fantasy">Fantasy</li>
+              <li id="animation">Animation</li>
+            </ul>
+          </div>
+          <hr />
         </div>
+      </div>
     </div>
     <!-- MOVIES BY GENRES -->
     <section class="byGenres">
-        <div class="container">
-            <div class="messageGenres">
-                <p>Comedy</p>
-            </div>
-            <div class="swiper mySwiper3">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="./assets/harrypotter.jfif" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/ironman.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/jurassic park.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/moonlight.jfif" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/ironman.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="./assets/harrypotter.jfif" alt=""></div>
-                </div>
-            </div>
-            <div class="btn-swiper">
-                <div class="swiper-next-third"></div>
-                <div class="swiper-prev-third"></div>
-            </div>
+      <div class="container">
+        <div class="messageGenres">
+          <p>Comedy</p>
         </div>
+        <div class="swiper mySwiper3">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./assets/harrypotter.jfif" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/ironman.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/jurassic park.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/moonlight.jfif" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/ironman.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/harrypotter.jfif" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="btn-swiper">
+          <div class="swiper-next-third"></div>
+          <div class="swiper-prev-third"></div>
+        </div>
+      </div>
     </section>
     <!-- FOOTER -->
     <footer>
-        <div class="container">
-            <div class="footer">
-                <div class="title"><span>BE</span>
-                    <h2>Movies</h2>
-                </div>
-                <div class="listFooter">
-                    <ul>
-                        <li><a href="#" class="searchLi">Search</a></li>
-                        <li><a href="#" class="LatestLi">Latest</a></li>
-                        <li><a href="#" class="genresLi">Genres</a></li>
-                        <li><a href="#" class="registerLi">Register</a></li>
-                        <li><a href="#" class="signinLi">Signin</a></li>
-                    </ul>
-                </div>
-                <div class="copyright">
-                    <h6>@2023 - All rights reserved</h6>
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer">
+          <div class="title">
+            <span>BE</span>
+            <h2>Movies</h2>
+          </div>
+          <div class="listFooter">
+            <ul>
+              <li><a href="#" class="searchLi">Search</a></li>
+              <li><a href="#" class="LatestLi">Latest</a></li>
+              <li><a href="#" class="genresLi">Genres</a></li>
+              <li><a href="#" class="registerLi">Register</a></li>
+              <li><a href="#" class="signinLi">Signin</a></li>
+            </ul>
+          </div>
+          <div class="copyright">
+            <h6>@2023 - All rights reserved</h6>
+          </div>
         </div>
+      </div>
     </footer>
     <!-- POPUP MOVIES CARD -->
     <div class="popup">
-        <div class="quitPopUp"><i class="fa-regular fa-circle-xmark"></i></div>
-        <div class="infosPop">
-            <div class="posterPop"><img class="posterImg" src="./assets/chihiro.jpg" alt=""></div>
-            <div class="textPop">
-                <h2>Chihiro</h2>
-                <p>2001</p>
-                <h5><span><i class="fa-solid fa-star" style="color: #c00;"></i></span>8.7</h5>
-                <span class="genres">Animation/Fantasy</span>
-                <div class="resume">Au cours d'un voyage en voiture, la famille de Chihiro,10 ans, fait une halte dans
-                    un parc à thème qui semble abandonné. Ses parents découvrent des mets succulents dans un restaurant
-                    et commencent à manger. Ils se retrouvent alors transformés en cochons. Prise de panique, Chihiro
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    CAST : Chihiro, sen, yubaba, aoshi
-                </div>
-            </div>
+      <div class="quitPopUp"><i class="fa-regular fa-circle-xmark"></i></div>
+      <div class="infosPop">
+        <div class="posterPop">
+          <img class="posterImg" src="./assets/chihiro.jpg" alt="" />
         </div>
+        <div class="textPop">
+          <h2>Chihiro</h2>
+          <p>2001</p>
+          <h5>
+            <span><i class="fa-solid fa-star" style="color: #c00"></i></span>8.7
+          </h5>
+          <span class="genres">Animation/Fantasy</span>
+          <div class="resume">
+            Au cours d'un voyage en voiture, la famille de Chihiro,10 ans, fait
+            une halte dans un parc à thème qui semble abandonné. Ses parents
+            découvrent des mets succulents dans un restaurant et commencent à
+            manger. Ils se retrouvent alors transformés en cochons. Prise de
+            panique, Chihiro
+            <br />
+            <br />
+            <br />
+            <br />
+            CAST : Chihiro, sen, yubaba, aoshi
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- SWIPER SCRIPT JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <!-- JS LINK -->
     <script src="index.js"></script>
-</body>
-
+  </body>
 </html>
