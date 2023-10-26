@@ -245,7 +245,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const listItems = sortList.querySelectorAll('li');
       listItems.forEach((item) => {
         item.classList.remove('redBgMovies');
-        fetchMoviesByGenre() /////////////////////////////
       });
 
       // Add the .redBgMovies class to the clicked list item
@@ -254,65 +253,60 @@ document.addEventListener("DOMContentLoaded", function () {
       // Set the messageGenres content based on the selected genre
       messageGenres.textContent = clickedItem.textContent;
     }
-
     
   });
-  
-  async function fetchMoviesByGenre() {
-    
-    const apiKey = 'c84fa46197059b44b8001782df185e79';
 
-    const url = `https://api.themoviedb.org/3/${messageGenres}/movie/list`;
-    console.log("Fetching movies genre with URL:", url);
+  // Function to populate the Swiper container with movie results
+function populateSwiperWithMovies(results, swiperContainer) {
+  const moviePostersContainer = document.querySelector(`.${swiperContainer} .swiper-wrapper`);
 
-    try {
-      const response = await fetch(url);
-      console.log("API Response:", response);
+  if (moviePostersContainer) {
+    moviePostersContainer.innerHTML = '';
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log("API Data:", data);
-        fetchMoviesByGenre(data.results);
-      } else {
-        console.log("API request failed");
-        displayNoMoviesByGenre();
+    results.forEach((movie) => {
+      if (movie.poster_path) {
+        const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+        const posterImage = document.createElement('img');
+        posterImage.src = posterURL;
+        const swiperSlide = document.createElement('div');
+        swiperSlide.classList.add('swiper-slide');
+        swiperSlide.appendChild(posterImage);
+        moviePostersContainer.appendChild(swiperSlide);
       }
-    } catch (error) {
-      console.error("Error:", error);
-      displayNoMoviesByGenre();
+    });
+  }
+}
+
+async function fetchMoviesByGenre(genreId, swiperContainer) {
+  try {
+    const apiKey = 'c84fa46197059b44b8001782df185e79'; // Replace with your API key
+    const apiUrlGenre = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr-FR&with_genres=${genreId}`;
+
+    const response = await fetch(apiUrlGenre);
+    if (!response.ok) {
+      throw new Error("Réponse du réseau non valide");
     }
 
-    if (latestMoviesContainer) {
-      latestMoviesContainer.innerHTML = ''; // Clear previous posters
+    const data = await response.json();
 
-      if (results.length > 0) {
-        message.textContent = "Latest Releases";
-        message.style.opacity = 1;
-
-        // Iterate through the latest movie results and add poster images to mySwiper2
-        results.forEach((movie) => {
-          if (movie.poster_path) {
-            const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-            const posterImage = document.createElement('img');
-            posterImage.src = posterURL;
-            const swiperSlide = document.createElement('div');
-            swiperSlide.classList.add('swiper-slide');
-            swiperSlide.appendChild(posterImage);
-            latestMoviesContainer.appendChild(swiperSlide);
-          }
-
-        });
-        
-      } else {
-        message.textContent = "No latest releases found";
-        message.style.opacity = 1;
-      }
-    }
+    populateSwiperWithMovies(data.results, swiperContainer);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des films par genre :", error);
   }
+}
 
-  function displayNoMoviesByGenre() {
-    console.log("Displaying no movies by genre");
-    message.style.opacity = 1;
-  }
-  
+// Add event listeners to fetch movies by genre and populate mySwiper3
+document.getElementById("comedy").addEventListener("click", () => fetchMoviesByGenre(35, "mySwiper3"));
+document.getElementById("drama").addEventListener("click", () => fetchMoviesByGenre(18, "mySwiper3"));
+document.getElementById("action").addEventListener("click", () => fetchMoviesByGenre(28, "mySwiper3"));
+document.getElementById("romance").addEventListener("click", () => fetchMoviesByGenre(10749, "mySwiper3"));
+document.getElementById("fantasy").addEventListener("click", () => fetchMoviesByGenre(14, "mySwiper3"));
+document.getElementById("animation").addEventListener("click", () => fetchMoviesByGenre(16, "mySwiper3"));
+
+// Fetch comedy movies by default when the page loads
+fetchMoviesByGenre(35, "mySwiper3");
+
+
+
+
 });
