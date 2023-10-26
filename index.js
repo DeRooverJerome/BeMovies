@@ -135,6 +135,66 @@ document.addEventListener("DOMContentLoaded", function () {
             const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
             const posterImage = document.createElement('img');
             posterImage.src = posterURL;
+
+            const openPopupForMovie = () => {
+              // Populate .popup with movie details here
+              // For example, you can set the movie title and other information in the popup
+              const popup = document.querySelector('.popup');
+              const popupTitle = popup.querySelector('h2');
+              const popupImage = popup.querySelector('.posterImg');
+              const popupGenres = popup.querySelector('.textPop .genres');
+              const popupReleaseYear = popup.querySelector('.textPop p');
+              const popupRating = popup.querySelector('.textPop h5');
+              const popupDescription = popup.querySelector('.textPop .resume');
+            
+              popupTitle.textContent = movie.title;
+              popupImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+              popupReleaseYear.textContent = movie.release_date.substring(0, 4);
+              popupRating.textContent = movie.vote_average.toFixed(1);
+              popupDescription.textContent = movie.overview;
+            
+              let genres = {
+                id28: "Action",
+                id12: "Adventure",
+                id16: "Animation",
+                id35: "Comedy",
+                id80: "Crime",
+                id99: "Documentary",
+                id18: "Drama",
+                id10751: "Family",
+                id14: "Fantasy",
+                id36: "History",
+                id27: "Horror",
+                id10402: "Music",
+                id9648: "Mystery",
+                id10749: "Romance",
+                id878: "Science Fiction",
+                id10770: "TV Movie",
+                id53: "Thriller",
+                id10572: "War",
+                id37: "Western",
+            };
+            
+            let genreFunc = (element) => {
+                let arrayOfGenre = element.genre_ids;
+                let movieGenre = [];
+                arrayOfGenre.forEach((cat) => {
+                    movieGenre.push(genres[`id${cat}`]); // Use square brackets for object property access
+                });
+                movieGenre = movieGenre.toString();
+                movieGenre = movieGenre.replaceAll(",", " / ");
+                return movieGenre;
+            };
+
+            popupGenres.textContent = genreFunc(movie);
+
+              // Display the popup
+              popup.style.display = 'block';
+            };
+
+            // Add a click event listener to the posterImage
+            posterImage.addEventListener('click', openPopupForMovie);
+
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide');
             swiperSlide.appendChild(posterImage);
@@ -212,6 +272,8 @@ document.addEventListener("DOMContentLoaded", function () {
             swiperSlide.classList.add('swiper-slide');
             swiperSlide.appendChild(posterImage);
             latestMoviesContainer.appendChild(swiperSlide);
+
+            
           }
         });
       } else {
@@ -253,60 +315,62 @@ document.addEventListener("DOMContentLoaded", function () {
       // Set the messageGenres content based on the selected genre
       messageGenres.textContent = clickedItem.textContent;
     }
-    
+
   });
 
   // Function to populate the Swiper container with movie results
-function populateSwiperWithMovies(results, swiperContainer) {
-  const moviePostersContainer = document.querySelector(`.${swiperContainer} .swiper-wrapper`);
+  function populateSwiperWithMovies(results, swiperContainer) {
+    const moviePostersContainer = document.querySelector(`.${swiperContainer} .swiper-wrapper`);
 
-  if (moviePostersContainer) {
-    moviePostersContainer.innerHTML = '';
+    if (moviePostersContainer) {
+      moviePostersContainer.innerHTML = '';
 
-    results.forEach((movie) => {
-      if (movie.poster_path) {
-        const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-        const posterImage = document.createElement('img');
-        posterImage.src = posterURL;
-        const swiperSlide = document.createElement('div');
-        swiperSlide.classList.add('swiper-slide');
-        swiperSlide.appendChild(posterImage);
-        moviePostersContainer.appendChild(swiperSlide);
-      }
-    });
-  }
-}
+      results.forEach((movie) => {
+        if (movie.poster_path) {
+          const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+          const posterImage = document.createElement('img');
+          posterImage.src = posterURL;
+          const swiperSlide = document.createElement('div');
+          swiperSlide.classList.add('swiper-slide');
+          swiperSlide.appendChild(posterImage);
+          moviePostersContainer.appendChild(swiperSlide);
 
-async function fetchMoviesByGenre(genreId, swiperContainer) {
-  try {
-    const apiKey = 'c84fa46197059b44b8001782df185e79'; // Replace with your API key
-    const apiUrlGenre = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr-FR&with_genres=${genreId}`;
 
-    const response = await fetch(apiUrlGenre);
-    if (!response.ok) {
-      throw new Error("Réponse du réseau non valide");
+        }
+      });
     }
-
-    const data = await response.json();
-
-    populateSwiperWithMovies(data.results, swiperContainer);
-  } catch (error) {
-    console.error("Erreur lors de la récupération des films par genre :", error);
   }
-}
 
-// Add event listeners to fetch movies by genre and populate mySwiper3
-document.getElementById("comedy").addEventListener("click", () => fetchMoviesByGenre(35, "mySwiper3"));
-document.getElementById("drama").addEventListener("click", () => fetchMoviesByGenre(18, "mySwiper3"));
-document.getElementById("action").addEventListener("click", () => fetchMoviesByGenre(28, "mySwiper3"));
-document.getElementById("romance").addEventListener("click", () => fetchMoviesByGenre(10749, "mySwiper3"));
-document.getElementById("fantasy").addEventListener("click", () => fetchMoviesByGenre(14, "mySwiper3"));
-document.getElementById("animation").addEventListener("click", () => fetchMoviesByGenre(16, "mySwiper3"));
+  async function fetchMoviesByGenre(genreId, swiperContainer) {
+    try {
+      const apiKey = 'c84fa46197059b44b8001782df185e79'; // Replace with your API key
+      const apiUrlGenre = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr-FR&with_genres=${genreId}`;
 
-// Fetch comedy movies by default when the page loads
-fetchMoviesByGenre(35, "mySwiper3");
+      const response = await fetch(apiUrlGenre);
+      if (!response.ok) {
+        throw new Error("Réponse du réseau non valide");
+      }
 
+      const data = await response.json();
 
+      populateSwiperWithMovies(data.results, swiperContainer);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des films par genre :", error);
+    }
+  }
 
+  // Add event listeners to fetch movies by genre and populate mySwiper3
+  console.log("read");
+  document.getElementById("comedy").addEventListener("click", () => fetchMoviesByGenre(35, "mySwiper3"));
+  document.getElementById("drama").addEventListener("click", () => fetchMoviesByGenre(18, "mySwiper3"));
+  document.getElementById("action").addEventListener("click", () => fetchMoviesByGenre(28, "mySwiper3"));
+  document.getElementById("romance").addEventListener("click", () => fetchMoviesByGenre(10749, "mySwiper3"));
+  document.getElementById("fantasy").addEventListener("click", () => fetchMoviesByGenre(14, "mySwiper3"));
+  document.getElementById("animation").addEventListener("click", () => fetchMoviesByGenre(16, "mySwiper3"));
+
+  // Fetch comedy movies by default when the page loads
+  console.log("read");
+  fetchMoviesByGenre(35, "mySwiper3");
+  console.log("read");
 
 });
