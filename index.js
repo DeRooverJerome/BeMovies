@@ -120,22 +120,23 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Displaying results");
     const message = document.querySelector('.message');
     const moviePostersContainer = document.getElementById('moviePosters');
-
+  
     // Verify the existence of moviePostersContainer before modifying it
     if (moviePostersContainer) {
       moviePostersContainer.innerHTML = ''; // Clear previous posters
-
+  
       if (results.length > 0) {
         message.textContent = `Results for '${searchResult}'`;
         message.style.opacity = 1;
-
+  
         // Iterate through the search results and add poster images to the swiper
         results.forEach((movie) => {
           if (movie.poster_path) {
             const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
             const posterImage = document.createElement('img');
             posterImage.src = posterURL;
-
+            posterImage.classList.add('movie-poster'); // Add a class for styling
+  
             const openPopupForMovie = () => {
               // Populate .popup with movie details here
               // For example, you can set the movie title and other information in the popup
@@ -146,13 +147,13 @@ document.addEventListener("DOMContentLoaded", function () {
               const popupReleaseYear = popup.querySelector('.textPop p');
               const popupRating = popup.querySelector('.textPop h5');
               const popupDescription = popup.querySelector('.textPop .resume');
-            
+  
               popupTitle.textContent = movie.title;
               popupImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
               popupReleaseYear.textContent = movie.release_date.substring(0, 4);
               popupRating.textContent = movie.vote_average.toFixed(1);
               popupDescription.textContent = movie.overview;
-            
+  
               let genres = {
                 id28: "Action",
                 id12: "Adventure",
@@ -173,35 +174,51 @@ document.addEventListener("DOMContentLoaded", function () {
                 id53: "Thriller",
                 id10572: "War",
                 id37: "Western",
-            };
-            
-            let genreFunc = (element) => {
+              };
+  
+              let genreFunc = (element) => {
                 let arrayOfGenre = element.genre_ids;
                 let movieGenre = [];
                 arrayOfGenre.forEach((cat) => {
-                    movieGenre.push(genres[`id${cat}`]); // Use square brackets for object property access
+                  movieGenre.push(genres[`id${cat}`]); // Use square brackets for object property access
                 });
                 movieGenre = movieGenre.toString();
                 movieGenre = movieGenre.replaceAll(",", " / ");
                 return movieGenre;
-            };
-
-            popupGenres.textContent = genreFunc(movie);
-
+              };
+  
+              popupGenres.textContent = genreFunc(movie);
+  
               // Display the popup
               popup.style.display = 'block';
+  
+              // Add an event listener to the quitPopUp element
+              const quitPopUp = popup.querySelector('.quitPopUp');
+              quitPopUp.addEventListener('click', () => {
+                // Close the popup when quitPopUp is clicked
+                popup.style.display = 'none';
+
+                
+              });
             };
-
+  
+            // Add a class for styling
+            posterImage.classList.add('movie-poster');
+  
             // Add a click event listener to the posterImage
-            posterImage.addEventListener('click', openPopupForMovie);
-
+            posterImage.addEventListener('click', () => {
+              openPopupForMovie(movie);
+            });
+  
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide');
             swiperSlide.appendChild(posterImage);
             moviePostersContainer.appendChild(swiperSlide);
-          }
-        });
 
+          }
+
+        });
+  
         // After modifying the content, update the swiper to reflect the changes
       } else {
         message.textContent = `No results for '${searchResult}'`;
@@ -209,7 +226,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
-
+  
+  
   function displayNoResults() {
     console.log("Displaying no results");
     const message = document.querySelector('.message');
@@ -273,7 +291,73 @@ document.addEventListener("DOMContentLoaded", function () {
             swiperSlide.appendChild(posterImage);
             latestMoviesContainer.appendChild(swiperSlide);
 
-            
+            const openPopupForMovie = () => {
+              // Populate .popup with movie details here
+              // For example, you can set the movie title and other information in the popup
+              const popup = document.querySelector('.popup');
+              const popupTitle = popup.querySelector('h2');
+              const popupImage = popup.querySelector('.posterImg');
+              const popupGenres = popup.querySelector('.textPop .genres');
+              const popupReleaseYear = popup.querySelector('.textPop p');
+              const popupRating = popup.querySelector('.textPop h5');
+              const popupDescription = popup.querySelector('.textPop .resume');
+  
+              popupTitle.textContent = movie.title;
+              popupImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+              popupReleaseYear.textContent = movie.release_date.substring(0, 4);
+              popupRating.textContent = movie.vote_average.toFixed(1);
+              popupDescription.textContent = movie.overview;
+  
+              let genres = {
+                id28: "Action",
+                id12: "Adventure",
+                id16: "Animation",
+                id35: "Comedy",
+                id80: "Crime",
+                id99: "Documentary",
+                id18: "Drama",
+                id10751: "Family",
+                id14: "Fantasy",
+                id36: "History",
+                id27: "Horror",
+                id10402: "Music",
+                id9648: "Mystery",
+                id10749: "Romance",
+                id878: "Science Fiction",
+                id10770: "TV Movie",
+                id53: "Thriller",
+                id10572: "War",
+                id37: "Western",
+              };
+  
+              let genreFunc = (element) => {
+                let arrayOfGenre = element.genre_ids;
+                let movieGenre = [];
+                arrayOfGenre.forEach((cat) => {
+                  movieGenre.push(genres[`id${cat}`]); // Use square brackets for object property access
+                });
+                movieGenre = movieGenre.toString();
+                movieGenre = movieGenre.replaceAll(",", " / ");
+                return movieGenre;
+              };
+  
+              popupGenres.textContent = genreFunc(movie);
+  
+              // Display the popup
+              popup.style.display = 'block';
+  
+              // Add an event listener to the quitPopUp element
+              const quitPopUp = popup.querySelector('.quitPopUp');
+              quitPopUp.addEventListener('click', () => {
+                // Close the popup when quitPopUp is clicked
+                popup.style.display = 'none';
+              });
+            };
+            // Add a click event listener to the posterImage
+            posterImage.addEventListener('click', () => {
+              openPopupForMovie(movie);
+            });
+
           }
         });
       } else {
@@ -335,7 +419,72 @@ document.addEventListener("DOMContentLoaded", function () {
           swiperSlide.appendChild(posterImage);
           moviePostersContainer.appendChild(swiperSlide);
 
+          const openPopupForMovie = () => {
+            // Populate .popup with movie details here
+            // For example, you can set the movie title and other information in the popup
+            const popup = document.querySelector('.popup');
+            const popupTitle = popup.querySelector('h2');
+            const popupImage = popup.querySelector('.posterImg');
+            const popupGenres = popup.querySelector('.textPop .genres');
+            const popupReleaseYear = popup.querySelector('.textPop p');
+            const popupRating = popup.querySelector('.textPop h5');
+            const popupDescription = popup.querySelector('.textPop .resume');
 
+            popupTitle.textContent = movie.title;
+            popupImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+            popupReleaseYear.textContent = movie.release_date.substring(0, 4);
+            popupRating.textContent = movie.vote_average.toFixed(1);
+            popupDescription.textContent = movie.overview;
+
+            let genres = {
+              id28: "Action",
+              id12: "Adventure",
+              id16: "Animation",
+              id35: "Comedy",
+              id80: "Crime",
+              id99: "Documentary",
+              id18: "Drama",
+              id10751: "Family",
+              id14: "Fantasy",
+              id36: "History",
+              id27: "Horror",
+              id10402: "Music",
+              id9648: "Mystery",
+              id10749: "Romance",
+              id878: "Science Fiction",
+              id10770: "TV Movie",
+              id53: "Thriller",
+              id10572: "War",
+              id37: "Western",
+            };
+
+            let genreFunc = (element) => {
+              let arrayOfGenre = element.genre_ids;
+              let movieGenre = [];
+              arrayOfGenre.forEach((cat) => {
+                movieGenre.push(genres[`id${cat}`]); // Use square brackets for object property access
+              });
+              movieGenre = movieGenre.toString();
+              movieGenre = movieGenre.replaceAll(",", " / ");
+              return movieGenre;
+            };
+
+            popupGenres.textContent = genreFunc(movie);
+
+            // Display the popup
+            popup.style.display = 'block';
+
+            // Add an event listener to the quitPopUp element
+            const quitPopUp = popup.querySelector('.quitPopUp');
+            quitPopUp.addEventListener('click', () => {
+              // Close the popup when quitPopUp is clicked
+              popup.style.display = 'none';
+            });
+          };
+          // Add a click event listener to the posterImage
+          posterImage.addEventListener('click', () => {
+            openPopupForMovie(movie);
+          });
         }
       });
     }
@@ -344,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function fetchMoviesByGenre(genreId, swiperContainer) {
     try {
       const apiKey = 'c84fa46197059b44b8001782df185e79'; // Replace with your API key
-      const apiUrlGenre = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr-FR&with_genres=${genreId}`;
+      const apiUrlGenre = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-EN&with_genres=${genreId}`;
 
       const response = await fetch(apiUrlGenre);
       if (!response.ok) {
