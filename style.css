@@ -21,6 +21,7 @@ html {
 body {
   background: #191b20;
   color: hsla(0, 0%, 100%, 1);
+  position: relative;
 }
 
 .container {
@@ -58,7 +59,7 @@ h1 {
   text-transform: uppercase;
 }
 
-h1>span {
+h1 > span {
   color: #c00;
   font-family: Inria Sans;
   font-size: 36px;
@@ -75,7 +76,7 @@ ul {
   gap: 30px;
 }
 
-ul>li>a {
+ul > li > a {
   color: #fff;
   font-family: Inria Sans;
   font-size: 14px;
@@ -84,7 +85,7 @@ ul>li>a {
   text-transform: uppercase;
 }
 
-ul>li>a:hover {
+ul > li > a:hover {
   color: #c00;
 }
 
@@ -99,7 +100,7 @@ ul>li>a:hover {
   margin-top: 73px;
 }
 
-.search>input {
+.search > input {
   width: 272px;
   height: 44px;
   background: #fff;
@@ -121,11 +122,11 @@ input[type="text"] {
   font-weight: 400;
 }
 
-.search>input:focus {
+.search > input:focus {
   outline: none;
 }
 
-.search>span {
+.search > span {
   width: 44px;
   height: 44px;
   flex-shrink: 0;
@@ -195,9 +196,10 @@ input[type="text"] {
   align-items: center;
   justify-content: center;
   border-radius: 8px 0px 0px 8px;
+  cursor: pointer;
 }
 
-.signup>h2 {
+.signup > h2 {
   color: #fff;
   font-family: Inria Sans;
   font-size: 24px;
@@ -214,9 +216,10 @@ input[type="text"] {
   align-items: center;
   justify-content: center;
   border-radius: 0px 8px 8px 0px;
+  cursor: pointer;
 }
 
-.login>h2 {
+.login > h2 {
   color: #fff;
   font-family: Inria Sans;
   font-size: 24px;
@@ -287,9 +290,10 @@ input[type="text"] {
   flex-shrink: 0;
   border-radius: 4px;
   background: #fff;
+  cursor: pointer;
 }
 
-.check>p {
+.check > p {
   color: #fff;
   font-family: Inter;
   font-size: 16px;
@@ -307,9 +311,10 @@ input[type="text"] {
   justify-content: center;
   margin-left: 63px;
   margin-top: 47px;
+  cursor: pointer;
 }
 
-.loginButton>h3 {
+.loginButton > h3 {
   color: #fff;
   font-family: Inria Sans;
   font-size: 20px;
@@ -318,12 +323,13 @@ input[type="text"] {
   text-transform: uppercase;
 }
 
-.forgot>p {
+.forgot > p {
   color: #c00;
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
   margin: 30px 0 19px 63px;
+  cursor: pointer;
 }
 
 .notMember {
@@ -332,18 +338,19 @@ input[type="text"] {
   margin-left: 63px;
 }
 
-.notMember>p {
+.notMember > p {
   color: #fff;
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
 }
 
-.notMember>span {
+.notMember > span {
   color: #c00;
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
+  cursor: pointer;
 }
 
 /* MODALE ACTIVE JS  ------- */
@@ -471,8 +478,8 @@ input[type="text"] {
 }
 
 .title h4 {
+  margin: 0 auto;
   color: #fff;
-  text-align: center;
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
@@ -596,11 +603,57 @@ hr {
 
 /* CARD HOVER MOVIES INFOS */
 
-/* js addEvent on hover for brightness + innerHTML */
-
-.imgHover {
-  filter: brightness(10%);
+/* .container .cardHover {
+  cursor: pointer;
+  padding: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  transition: opacity 0.2s ease-in;
+  opacity: 0;
 }
+
+.container .cardHover:hover {
+  opacity: 1;
+} */
+
+.tileHover {
+  color: white;
+  font-size: 2rem;
+  font-family: Inria sans;
+  font-weight: 700;
+}
+
+.dateHover {
+  font-size: 1.3rem;
+}
+
+
+.spanHover i {
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.spanHover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.averageHover {
+  font-size: 1.5rem;
+}
+
+/* js addEvent on hover for brightness + innerHTML */
 
 /* POPUP MOVIE */
 
@@ -611,6 +664,10 @@ hr {
 /* pop up display none */
 
 .popup {
+  position: fixed;
+  top: 10vh;
+  left: 30vw;
+  z-index: 3;
   width: 742px;
   height: 526px;
   background: #000;
@@ -622,6 +679,7 @@ hr {
 .quitPopUp {
   margin: 10px;
   margin-bottom: 50px;
+  cursor: pointer;
 }
 
 .infosPop {
@@ -693,17 +751,10 @@ hr {
   font-size: 16px;
   font-weight: 300;
   line-height: 150%;
-  /* 24px */
   letter-spacing: 0.48px;
+  overflow-y: scroll;
 }
 
-.casting {
-  width: 292px;
-  color: #fff;
-  font-family: Inria Sans;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 150%;
-  /* 24px */
-  letter-spacing: 0.48px;
+.resume::-webkit-scrollbar {
+  display: none;
 }
