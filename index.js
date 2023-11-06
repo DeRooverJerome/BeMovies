@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize Swiper
-  console.log("Initializing Swiper");
   let swiper = new Swiper(".mySwiper", {
     slidesPerView: 4,
     centeredSlides: false,
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  console.log("Initializing Swiper2");
   let swiper2 = new Swiper(".mySwiper2", {
     slidesPerView: 4,
     centeredSlides: false,
@@ -22,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  console.log("Initializing Swiper3");
   let swiper3 = new Swiper(".mySwiper3", {
     slidesPerView: 4,
     centeredSlides: false,
@@ -34,19 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // MODAL
-  console.log("Setting up modal functionality");
   const openModalButtonReg = document.querySelector(".registerLi");
   const openModalButtonSign = document.querySelector(".signinLi");
   const modal = document.querySelector(".modal");
   const closeModalButton = document.querySelector(".quitModal");
 
   function openModal() {
-    console.log("Opening modal");
     modal.style.display = "block";
   }
 
   function closeModal() {
-    console.log("Closing modal");
     modal.style.display = "none";
   }
 
@@ -55,24 +49,20 @@ document.addEventListener("DOMContentLoaded", function () {
   closeModalButton.addEventListener("click", closeModal);
 
   // MODAL TOGGLE
-  console.log("Setting up modal toggle functionality");
   const signupDiv = document.querySelector(".selectLog .signup");
   const loginDiv = document.querySelector(".selectLog .login");
 
   signupDiv.addEventListener("click", () => {
-    console.log("Switching to Signup");
     signupDiv.classList.add("redBg");
     loginDiv.classList.remove("redBg");
   });
 
   loginDiv.addEventListener("click", () => {
-    console.log("Switching to Login");
     loginDiv.classList.add("redBg");
     signupDiv.classList.remove("redBg");
   });
 
   // SEARCH BAR
-  console.log("Setting up search bar functionality");
   let searchInput = document.getElementById("inputSearch");
   let searchResult = "";
 
@@ -81,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "Enter") {
       // Only fetch when the Enter key is pressed
       searchResult = e.target.value;
-      console.log("Search input submitted:", searchResult);
       fetchMovies();
     }
   });
@@ -89,35 +78,28 @@ document.addEventListener("DOMContentLoaded", function () {
   // Listen for click event on the search button
   document.querySelector(".validateSearch").addEventListener("click", () => {
     searchResult = searchInput.value;
-    console.log("Search button clicked:", searchResult);
     fetchMovies();
   });
 
   async function fetchMovies() {
     const apiKey = "c84fa46197059b44b8001782df185e79";
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchResult}&language=en-EN&sort_by=vote_average.desc&sort_by=vote_count.desc`;
-    console.log("Fetching movies with URL:", url);
 
     try {
       const response = await fetch(url);
-      console.log("API Response:", response);
 
       if (response.ok) {
         const data = await response.json();
-        console.log("API Data:", data);
         displayResults(data.results);
       } else {
-        console.log("API request failed");
         displayNoResults();
       }
     } catch (error) {
-      console.error("Error:", error);
       displayNoResults();
     }
   }
 
   function displayResults(results) {
-    console.log("Displaying results");
     const message = document.querySelector(".message");
     const moviePostersContainer = document.getElementById("moviePosters");
 
@@ -135,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
             const posterImage = document.createElement("img");
             posterImage.src = posterURL;
-            posterImage.classList.add("movie-poster");
+            posterImage.classList.add("movie-poster"); // Add a class for styling
 
             const openPopupForMovie = (movie) => {
               // Populate .popup with movie details here
@@ -149,15 +131,10 @@ document.addEventListener("DOMContentLoaded", function () {
               const popupDescription = popup.querySelector(".textPop .resume");
 
               // Remplir le contenu des éléments avec les données du film
-              h2.textContent = movie.title;
-              yearParagraph.textContent = movie.release_date.substring(0, 4);
+              popupTitle.textContent = movie.title;
+              popupReleaseYear.textContent = movie.release_date.substring(0, 4);
 
-              // Vous avez une fonction genreFunc pour obtenir les genres du film
-              const genresHover = genreFunc(movie);
-              genreParagraph.textContent = `Genres: ${genresHover}`;
-
-              span.innerHTML = "&nbsp;"; // Balise span vide
-              averageVoteParagraph.innerHTML = `<p>
+              popupRating.innerHTML = `<p>
               <span>
               <i class="fa-solid fa-star" style="color: #c00"></i>
               </span>${movie.vote_average.toFixed(1)}
@@ -203,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 movieGenre = movieGenre.replaceAll(",", " / ");
                 return movieGenre;
               };
-
               popupGenres.textContent = genreFunc(movie);
 
               // Display the popup
@@ -265,7 +241,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function displayNoResults() {
-    console.log("Displaying no results");
     const message = document.querySelector(".message");
     message.textContent = `No results for '${searchResult}'`;
     message.style.opacity = 1;
@@ -282,7 +257,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const formattedOneMonthAgo = oneMonthAgo.toISOString().split("T")[0];
 
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_date.gte=${formattedOneMonthAgo}&primary_release_date.lte=${formattedToday}&language=en-EN`;
-    console.log("Fetching latest movies with URL:", url);
 
     try {
       const response = await fetch(url);
@@ -290,21 +264,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("API Data:", data);
         displayLatestMovies(data.results);
       } else {
-        console.log("API request failed");
         displayNoLatestMovies();
       }
     } catch (error) {
-      console.error("Error:", error);
       displayNoLatestMovies();
     }
   }
 
   // Display latest movies in mySwiper2
   function displayLatestMovies(results) {
-    console.log("Displaying latest movies");
     const message = document.querySelector(".message");
     const latestMoviesContainer = document.querySelector(
       ".swiper.mySwiper2 .swiper-wrapper"
@@ -434,7 +404,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function displayNoLatestMovies() {
-    console.log("Displaying no latest releases");
     const message = document.querySelector(".message");
     message.textContent = "No latest releases found";
     message.style.opacity = 1;
@@ -629,7 +598,13 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", () => fetchMoviesByGenre(16, "mySwiper3"));
 
   // Fetch comedy movies by default when the page loads
-  console.log("read");
   fetchMoviesByGenre(35, "mySwiper3");
-  console.log("read");
+});
+
+// mediaqueries
+
+const burgerIcon = document.querySelector(".fa-bars");
+const navBar = document.querySelector(".navbar-list");
+burgerIcon.addEventListener("click", () => {
+  navBar.classList.toggle("showNavBar");
 });

@@ -637,7 +637,6 @@ hr {
   font-size: 1.3rem;
 }
 
-
 .spanHover i {
   font-size: 1.5rem;
   align-items: center;
@@ -757,4 +756,174 @@ hr {
 
 .resume::-webkit-scrollbar {
   display: none;
+}
+
+.fa-bars {
+  display: none;
+}
+
+/*  MEDIAQUERIES */
+
+/* ipad */
+@media screen and (max-width: 768px) {
+  .navbar {
+    justify-content: space-around;
+    gap: 100px;
+  }
+
+  .popup {
+    left: 10px;
+    top: 100px;
+  }
+}
+
+/* iphone 12 pro max */
+
+@media screen and (max-width: 428px) {
+  .fa-bars {
+    display: block;
+    cursor: pointer;
+  }
+  .main-title {
+    margin: 0;
+  }
+
+  .navbar-list {
+    display: none;
+  }
+
+  .showNavBar {
+    position: absolute;
+    display: block;
+    display: flex;
+    top: 100px;
+    left: 20px;
+  }
+
+  .messageResult {
+    margin-left: 10px;
+  }
+
+  .swiper-next {
+    display: none;
+  }
+  .swiper-prev {
+    display: none;
+  }
+
+  .swiper-next-second {
+    display: none;
+  }
+  .swiper-next-third {
+    display: none;
+  }
+
+  .messageReleases {
+    margin: 0;
+    margin-top: 100px;
+    margin-left: 10px;
+  }
+
+  .title {
+    margin-left: 10px;
+  }
+
+  .list > ul > li {
+    font-size: 0.6rem;
+  }
+
+  .redBgMovies {
+    background: #c00;
+    padding: 2px;
+    width: 50px;
+    height: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .messageGenres {
+    margin: 0;
+    margin-left: -210px;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popup {
+    width: 410px;
+    height: 800px;
+  }
+
+  .posterImg {
+    margin: 0;
+    width: 200px;
+    height: 260px;
+  }
+  .quitPopUp {
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .infosPop {
+    display: flex;
+    flex-direction: column;
+  }
+  .textPop > h5 {
+    margin: 0;
+  }
+  .modal {
+    width: 410px;
+    height: 608px;
+    background: #000;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    transition: 0.3s ease;
+    display: none;
+    z-index: 5;
+  }
+}
+
+/* iphone 12 pro */
+@media screen and (max-width: 390px) {
+  .modal {
+    width: 400px;
+    height: 608px;
+    background: #000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: 0.3s ease;
+    display: none;
+    z-index: 5;
+  }
+
+  .navbar-list {
+    margin-left: -14px;
+  }
+}
+
+/* iphone SE */
+@media screen and (max-width: 375px) {
+  .navbar-list > ul > li > a {
+    font-size: 0.8rem;
+  }
+  .list > ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .listFooter > ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .footer {
+    height: 396px;
+  }
 }
