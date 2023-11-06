@@ -66,20 +66,19 @@ document.addEventListener("DOMContentLoaded", function () {
   let searchInput = document.getElementById("inputSearch");
   let searchResult = "";
 
-  // Listen for "keydown" event
   searchInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      // Only fetch when the Enter key is pressed
       searchResult = e.target.value;
       fetchMovies();
     }
   });
 
-  // Listen for click event on the search button
   document.querySelector(".validateSearch").addEventListener("click", () => {
     searchResult = searchInput.value;
     fetchMovies();
   });
+
+  // Fetch movie depending on the search
 
   async function fetchMovies() {
     const apiKey = "c84fa46197059b44b8001782df185e79";
@@ -103,25 +102,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const message = document.querySelector(".message");
     const moviePostersContainer = document.getElementById("moviePosters");
 
-    // Verify the existence of moviePostersContainer before modifying it
     if (moviePostersContainer) {
-      moviePostersContainer.innerHTML = ""; // Clear previous posters
+      moviePostersContainer.innerHTML = "";
 
       if (results.length > 0) {
         message.textContent = `Results for '${searchResult}'`;
         message.style.opacity = 1;
 
-        // Iterate through the search results and add poster images to the swiper
         results.forEach((movie) => {
           if (movie.poster_path) {
             const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
             const posterImage = document.createElement("img");
             posterImage.src = posterURL;
-            posterImage.classList.add("movie-poster"); // Add a class for styling
+            posterImage.classList.add("movie-poster");
 
             const openPopupForMovie = (movie) => {
-              // Populate .popup with movie details here
-              // For example, you can set the movie title and other information in the popup
               const popup = document.querySelector(".popup");
               const popupTitle = popup.querySelector("h2");
               const popupImage = popup.querySelector(".posterImg");
@@ -130,11 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
               const popupRating = popup.querySelector(".textPop h5");
               const popupDescription = popup.querySelector(".textPop .resume");
 
-              // Remplir le contenu des éléments avec les données du film
               popupTitle.textContent = movie.title;
               popupReleaseYear.textContent = movie.release_date.substring(0, 4);
-
-              // Ajouter les éléments créés à la div cardHover
 
               popupTitle.textContent = movie.title;
               popupImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -181,21 +173,16 @@ document.addEventListener("DOMContentLoaded", function () {
               };
               popupGenres.textContent = genreFunc(movie);
 
-              // Display the popup
               popup.style.display = "block";
 
-              // Add an event listener to the quitPopUp element
               const quitPopUp = popup.querySelector(".quitPopUp");
               quitPopUp.addEventListener("click", () => {
-                // Close the popup when quitPopUp is clicked
                 popup.style.display = "none";
               });
             };
 
-            // Add a class for styling
             posterImage.classList.add("movie-poster");
 
-            // Add a click event listener to the posterImage
             posterImage.addEventListener("click", () => {
               openPopupForMovie(movie);
             });
@@ -234,8 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
           }
         });
-
-        // After modifying the content, update the swiper to reflect the changes
       } else {
         message.textContent = `No results for '${searchResult}'`;
         message.style.opacity = 1;
@@ -249,7 +234,8 @@ document.addEventListener("DOMContentLoaded", function () {
     message.style.opacity = 1;
   }
 
-  // Fetch latest movies for mySwiper2
+  // Fetch latest releases
+
   async function fetchLatestMovies() {
     const apiKey = "c84fa46197059b44b8001782df185e79";
     const today = new Date();
@@ -276,22 +262,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Display latest movies in mySwiper2
   function displayLatestMovies(results) {
     const message = document.querySelector(".message");
     const latestMoviesContainer = document.querySelector(
       ".swiper.mySwiper2 .swiper-wrapper"
     );
 
-    // Verify the existence of latestMoviesContainer before modifying it
     if (latestMoviesContainer) {
-      latestMoviesContainer.innerHTML = ""; // Clear previous posters
+      latestMoviesContainer.innerHTML = "";
 
       if (results.length > 0) {
         message.textContent = "No result yet, type a movies.";
         message.style.opacity = 1;
 
-        // Iterate through the latest movie results and add poster images to mySwiper2
         results.forEach((movie) => {
           if (movie.poster_path) {
             const posterURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -319,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
             spanHover.classList.add("spanHover");
             spanHover.innerHTML = `
             <i class="fa-solid fa-star" style="color: #c00"></i>
-          `;
+            `;
             cardHover.appendChild(spanHover);
             const averageHover = document.createElement("p");
             averageHover.classList.add("averageHover");
@@ -331,8 +314,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const openPopupForMovie = () => {
-              // Populate .popup with movie details here
-              // For example, you can set the movie title and other information in the popup
               const popup = document.querySelector(".popup");
               const popupTitle = popup.querySelector("h2");
               const popupImage = popup.querySelector(".posterImg");
@@ -377,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let arrayOfGenre = element.genre_ids;
                 let movieGenre = [];
                 arrayOfGenre.forEach((cat) => {
-                  movieGenre.push(genres[`id${cat}`]); // Use square brackets for object property access
+                  movieGenre.push(genres[`id${cat}`]);
                 });
                 movieGenre = movieGenre.toString();
                 movieGenre = movieGenre.replaceAll(",", " / ");
@@ -385,14 +366,10 @@ document.addEventListener("DOMContentLoaded", function () {
               };
 
               popupGenres.textContent = genreFunc(movie);
-
-              // Display the popup
               popup.style.display = "block";
 
-              // Add an event listener to the quitPopUp element
               const quitPopUp = popup.querySelector(".quitPopUp");
               quitPopUp.addEventListener("click", () => {
-                // Close the popup when quitPopUp is clicked
                 popup.style.display = "none";
               });
             };
@@ -414,34 +391,27 @@ document.addEventListener("DOMContentLoaded", function () {
     message.style.opacity = 1;
   }
 
-  // Add an event listener to fetch latest movies when the DOM content is loaded
   fetchLatestMovies();
 
-  // MOVIE GENRES
+  // Fetch Movies Genres
 
-  // Add an event listener to the .sortMovies section to handle list item clicks
   const sortList = document.querySelector(".sortMovies .list ul");
   const messageGenres = document.querySelector(".messageGenres p");
 
   sortList.addEventListener("click", (e) => {
     const clickedItem = e.target;
     if (clickedItem.tagName === "LI") {
-      // Remove the .redBgMovies class from all list items
       const listItems = sortList.querySelectorAll("li");
       listItems.forEach((item) => {
         item.classList.remove("redBgMovies");
       });
 
-      // Add the .redBgMovies class to the clicked list item
       clickedItem.classList.add("redBgMovies");
 
-      // Set the messageGenres content based on the selected genre
       messageGenres.textContent = clickedItem.textContent;
       genreHover.textContent = "test";
     }
   });
-
-  // Function to populate the Swiper container with movie results
 
   function populateSwiperWithMovies(results, swiperContainer) {
     const moviePostersContainer = document.querySelector(
@@ -484,15 +454,11 @@ document.addEventListener("DOMContentLoaded", function () {
           averageHover.classList.add("averageHover");
           averageHover.textContent = movie.vote_average.toFixed(1);
           cardHover.appendChild(averageHover);
-
-          // Ajoutez la ligne suivante à l'intérieur de cette boucle pour gérer le clic sur l'image du film
           swiperSlide.addEventListener("click", () => {
             openPopupForMovie(movie);
           });
 
           const openPopupForMovie = () => {
-            // Populate .popup with movie details here
-            // For example, you can set the movie title and other information in the popup
             const popup = document.querySelector(".popup");
             const popupTitle = popup.querySelector("h2");
             const popupImage = popup.querySelector(".posterImg");
@@ -538,7 +504,7 @@ document.addEventListener("DOMContentLoaded", function () {
               let arrayOfGenre = element.genre_ids;
               let movieGenre = [];
               arrayOfGenre.forEach((cat) => {
-                movieGenre.push(genres[`id${cat}`]); // Use square brackets for object property access
+                movieGenre.push(genres[`id${cat}`]);
               });
               movieGenre = movieGenre.toString();
               movieGenre = movieGenre.replaceAll(",", " / ");
@@ -546,18 +512,13 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             popupGenres.textContent = genreFunc(movie);
-
-            // Display the popup
             popup.style.display = "block";
 
-            // Add an event listener to the quitPopUp element
             const quitPopUp = popup.querySelector(".quitPopUp");
             quitPopUp.addEventListener("click", () => {
-              // Close the popup when quitPopUp is clicked
               popup.style.display = "none";
             });
           };
-          // Add a click event listener to the posterImage
           posterImage.addEventListener("click", () => {
             openPopupForMovie(movie);
           });
@@ -568,7 +529,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function fetchMoviesByGenre(genreId, swiperContainer) {
     try {
-      const apiKey = "c84fa46197059b44b8001782df185e79"; // Replace with your API key
+      const apiKey = "c84fa46197059b44b8001782df185e79";
       const apiUrlGenre = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-EN&with_genres=${genreId}`;
 
       const response = await fetch(apiUrlGenre);
@@ -577,7 +538,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       const data = await response.json();
-
       populateSwiperWithMovies(data.results, swiperContainer);
     } catch (error) {
       console.error(
@@ -587,7 +547,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Add event listeners to fetch movies by genre and populate mySwiper3
+  // Event on click for fetch the right genre depending on the id
+
   document
     .getElementById("comedy")
     .addEventListener("click", () => fetchMoviesByGenre(35, "mySwiper3"));
@@ -607,11 +568,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("animation")
     .addEventListener("click", () => fetchMoviesByGenre(16, "mySwiper3"));
 
-  // Fetch comedy movies by default when the page loads
   fetchMoviesByGenre(35, "mySwiper3");
 });
-
-// mediaqueries
 
 const burgerIcon = document.querySelector(".fa-bars");
 const navBar = document.querySelector(".navbar-list");
