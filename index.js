@@ -134,12 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
               popupTitle.textContent = movie.title;
               popupReleaseYear.textContent = movie.release_date.substring(0, 4);
 
-              popupRating.innerHTML = `<p>
-              <span>
-              <i class="fa-solid fa-star" style="color: #c00"></i>
-              </span>${movie.vote_average.toFixed(1)}
-              </p>`;
-
               // Ajouter les éléments créés à la div cardHover
 
               popupTitle.textContent = movie.title;
@@ -147,6 +141,11 @@ document.addEventListener("DOMContentLoaded", function () {
               popupReleaseYear.textContent = movie.release_date.substring(0, 4);
               popupRating.textContent = movie.vote_average.toFixed(1);
               popupDescription.textContent = movie.overview;
+              popupRating.innerHTML = `<p>
+              <span>
+              <i class="fa-solid fa-star" style="color: #c00"></i>
+              </span>${movie.vote_average.toFixed(1)}
+              </p>`;
 
               let genres = {
                 id28: "Action",
@@ -229,6 +228,10 @@ document.addEventListener("DOMContentLoaded", function () {
             averageHover.classList.add("averageHover");
             averageHover.textContent = movie.vote_average.toFixed(1);
             cardHover.appendChild(averageHover);
+
+            swiperSlide.addEventListener("click", () => {
+              openPopupForMovie(movie);
+            });
           }
         });
 
@@ -323,6 +326,10 @@ document.addEventListener("DOMContentLoaded", function () {
             averageHover.textContent = movie.vote_average.toFixed(1);
             cardHover.appendChild(averageHover);
 
+            swiperSlide.addEventListener("click", () => {
+              openPopupForMovie(movie);
+            });
+
             const openPopupForMovie = () => {
               // Populate .popup with movie details here
               // For example, you can set the movie title and other information in the popup
@@ -337,13 +344,12 @@ document.addEventListener("DOMContentLoaded", function () {
               popupTitle.textContent = movie.title;
               popupImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
               popupReleaseYear.textContent = movie.release_date.substring(0, 4);
-              popupRating.innerHTML = `<h5>
-              <span>
-                <i class="fa-solid fa-star" style="color: #c00"></i>
-              </span>
-              ${movie.vote_average.toFixed(1)}
-            </h5>`;
               popupDescription.textContent = movie.overview;
+              popupRating.innerHTML = `<p>
+              <span>
+              <i class="fa-solid fa-star" style="color: #c00"></i>
+              </span>${movie.vote_average.toFixed(1)}
+              </p>`;
 
               let genres = {
                 id28: "Action",
@@ -390,7 +396,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 popup.style.display = "none";
               });
             };
-            // Add a click event listener to the posterImage
             posterImage.addEventListener("click", () => {
               openPopupForMovie(movie);
             });
@@ -432,6 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Set the messageGenres content based on the selected genre
       messageGenres.textContent = clickedItem.textContent;
+      genreHover.textContent = "test";
     }
   });
 
@@ -480,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
           cardHover.appendChild(averageHover);
 
           // Ajoutez la ligne suivante à l'intérieur de cette boucle pour gérer le clic sur l'image du film
-          posterImage.addEventListener("click", () => {
+          swiperSlide.addEventListener("click", () => {
             openPopupForMovie(movie);
           });
 
@@ -500,6 +506,11 @@ document.addEventListener("DOMContentLoaded", function () {
             popupReleaseYear.textContent = movie.release_date.substring(0, 4);
             popupRating.textContent = movie.vote_average.toFixed(1);
             popupDescription.textContent = movie.overview;
+            popupRating.innerHTML = `<p>
+              <span>
+              <i class="fa-solid fa-star" style="color: #c00"></i>
+              </span>${movie.vote_average.toFixed(1)}
+              </p>`;
 
             let genres = {
               id28: "Action",
@@ -577,7 +588,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Add event listeners to fetch movies by genre and populate mySwiper3
-  console.log("read");
   document
     .getElementById("comedy")
     .addEventListener("click", () => fetchMoviesByGenre(35, "mySwiper3"));

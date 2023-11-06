@@ -506,7 +506,7 @@ input[type="text"] {
 }
 
 hr {
-  margin-bottom: -60px;
+  margin-bottom: -80px;
 }
 
 /* JS BACKGROUND RED ON SORT MOVIES ---------- */
@@ -603,7 +603,7 @@ hr {
 
 /* CARD HOVER MOVIES INFOS */
 
-/* .container .cardHover {
+.container .cardHover {
   cursor: pointer;
   padding: 1.5rem;
   position: absolute;
@@ -624,7 +624,7 @@ hr {
 
 .container .cardHover:hover {
   opacity: 1;
-} */
+}
 
 .tileHover {
   color: white;
@@ -723,6 +723,10 @@ hr {
   display: flex;
   align-items: center;
   margin-bottom: 18px;
+}
+.textPop h5 > p {
+  color: red;
+  font-size: 22px;
 }
 
 .fa-star {
